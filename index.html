@@ -319,7 +319,7 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
         <div class="card-body"><div class="card-name">Sedan / Car</div><div class="card-desc">Standard 4-door, coupe, hatchback</div></div>
         <div class="card-check">✓</div>
       </div>
-      <div class="card multi" data-val="SUV / Truck / Van" data-price="375" onclick="toggleMulti(this,'vehicleGrid')">
+      <div class="card multi" data-val="SUV / Truck / Van" data-price="385" onclick="toggleMulti(this,'vehicleGrid')">
         <div class="card-icon">🛻</div>
         <div class="card-body"><div class="card-name">SUV / Truck / Van</div><div class="card-desc">Full-size SUV, pickup, minivan</div></div>
         <div class="card-check">✓</div>
@@ -329,7 +329,7 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
         <div class="card-body"><div class="card-name">Motorcycle</div><div class="card-desc">Street, cruiser, sport bike</div></div>
         <div class="card-check">✓</div>
       </div>
-      <div class="card multi" data-val="Boat / RV" data-price="600" onclick="toggleMulti(this,'vehicleGrid')">
+      <div class="card multi" data-val="Boat / RV" data-price="750" onclick="toggleMulti(this,'vehicleGrid')">
         <div class="card-icon">⛵</div>
         <div class="card-body"><div class="card-name">Boat / RV</div><div class="card-desc">Pontoon, bass boat, camper, motorhome</div></div>
         <div class="card-check">✓</div>
@@ -383,22 +383,22 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     <div class="step-q">Any add-ons for the property?</div>
     <div class="step-hint">Select everything you'd like included in this visit. Skip if vehicles only.</div>
     <div class="cards c2" id="addonsGrid">
-      <div class="card multi" data-val="Trash Bins" data-price="30" onclick="toggleMulti(this,'addonsGrid')">
+      <div class="card multi" data-val="Trash Bins" data-price="60" onclick="toggleMulti(this,'addonsGrid')">
         <div class="card-icon">🗑️</div>
         <div class="card-body"><div class="card-name">Trash Bin Cleaning</div><div class="card-desc">Pressure wash, sanitize & deodorize — per bin</div></div>
         <div class="card-check">✓</div>
       </div>
-      <div class="card multi" data-val="Outdoor Fixtures" data-price="60" onclick="toggleMulti(this,'addonsGrid')">
+      <div class="card multi" data-val="Outdoor Fixtures" data-price="120" onclick="toggleMulti(this,'addonsGrid')">
         <div class="card-icon">💡</div>
         <div class="card-body"><div class="card-name">Outdoor Fixtures</div><div class="card-desc">Lights, mailbox, gutters, furniture</div></div>
         <div class="card-check">✓</div>
       </div>
-      <div class="card multi" data-val="Driveway / Patio" data-price="90" onclick="toggleMulti(this,'addonsGrid')">
+      <div class="card multi" data-val="Driveway / Patio" data-price="180" onclick="toggleMulti(this,'addonsGrid')">
         <div class="card-icon">🧹</div>
         <div class="card-body"><div class="card-name">Driveway / Patio Wash</div><div class="card-desc">Pressure wash concrete, pavers, deck</div></div>
         <div class="card-check">✓</div>
       </div>
-      <div class="card multi" data-val="Exterior House Wash" data-price="180" onclick="toggleMulti(this,'addonsGrid')">
+      <div class="card multi" data-val="Exterior House Wash" data-price="360" onclick="toggleMulti(this,'addonsGrid')">
         <div class="card-icon">🏠</div>
         <div class="card-body"><div class="card-name">Exterior House Wash</div><div class="card-desc">Soft wash siding, brick or vinyl exterior</div></div>
         <div class="card-check">✓</div>
@@ -809,8 +809,8 @@ function calcEstimate(){
   // If only property services selected (no vehicles), use fixed rates
   if(!S.vehicles.length){
     const propServices={
-      'Trash Bin Cleaning':30,'Outdoor Fixtures':60,
-      'Driveway / Patio':90,'Exterior House Washing':180
+      'Trash Bin Cleaning':60,'Outdoor Fixtures':120,
+      'Driveway / Patio':180,'Exterior House Washing':360
     };
     S.services.filter(s=>s!=='Vehicle Detailing').forEach(s=>{
       if(propServices[s]){base+=propServices[s];rows.push({label:s,amt:propServices[s]});}
@@ -818,7 +818,7 @@ function calcEstimate(){
   }
 
   // Supply fee if no water/electric
-  if(S.water==='no'||S.elec==='no'){ base+=35; rows.push({label:'Mobile Supply Fee (tank/generator)',amt:35}); }
+  if(S.water==='no'||S.elec==='no'){ base+=70; rows.push({label:'Mobile Supply Fee (tank/generator)',amt:70}); }
 
   const discount=Math.round(base*0.5);
   const total=base-discount;
@@ -886,32 +886,42 @@ function confirmBooking(){
   const est=calcEstimate();
 
   // ── Send to Formspree ──
+  const bookingData = {
+    name: S.fname + ' ' + S.lname,
+    phone: S.phone,
+    email: S.email,
+    contact_preference: S.contactPref,
+    services_requested: S.services.join(', '),
+    vehicles: S.vehicles.map(v=>v.val).join(', ') || 'None',
+    service_level: S.level ? S.level.val : 'N/A',
+    property_addons: S.addons.map(a=>a.val).join(', ') || 'None',
+    address: S.addr,
+    city: S.city,
+    zip: S.zip,
+    water_access: S.water,
+    electric_access: S.elec,
+    appointment_date: S.date,
+    appointment_time: S.time,
+    estimate_low: '$' + est.low,
+    estimate_high: '$' + est.high,
+    discount_applied: '50% off — savings of $' + est.discount,
+    notes: S.notes || 'None',
+    photos_uploaded: S.photos.length > 0 ? S.photos.length + ' photo(s)' : 'None'
+  };
+
+  // Send to Formspree (email notification)
   fetch('https://formspree.io/f/xkoajnyb', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      name: S.fname + ' ' + S.lname,
-      phone: S.phone,
-      email: S.email,
-      contact_preference: S.contactPref,
-      services_requested: S.services.join(', '),
-      vehicles: S.vehicles.map(v=>v.val).join(', '),
-      service_level: S.level ? S.level.val : 'N/A',
-      property_addons: S.addons.map(a=>a.val).join(', ') || 'None',
-      address: S.addr,
-      city: S.city,
-      zip: S.zip,
-      water_access: S.water,
-      electric_access: S.elec,
-      appointment_date: S.date,
-      appointment_time: S.time,
-      estimate_low: '$' + est.low,
-      estimate_high: '$' + est.high,
-      discount_applied: '50% off — savings of $' + est.discount,
-      notes: S.notes || 'None',
-      photos_uploaded: S.photos.length > 0 ? S.photos.length + ' photo(s)' : 'None'
-    })
+    body: JSON.stringify(bookingData)
   }).catch(err => console.error('Formspree error:', err));
+
+  // Send directly to Zapier (SMS + Gmail)
+  fetch('https://hooks.zapier.com/hooks/catch/18687693/4bp7n0e/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(bookingData)
+  }).catch(err => console.error('Zapier error:', err));
   const d=S.date ? new Date(S.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}) : '—';
   document.getElementById('successDetail').innerHTML=`
     <div class="sd-row"><span class="sk">Name</span><span class="sv">${S.fname} ${S.lname}</span></div>
