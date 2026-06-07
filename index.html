@@ -92,7 +92,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .card-desc{font-size:12px;color:var(--muted);line-height:1.5;}
 .card-check{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:2px solid var(--gold-border);display:grid;place-items:center;font-size:11px;font-weight:700;transition:all .2s;color:transparent;}
 .card.sel .card-check{background:var(--gold);border-color:var(--gold);color:var(--ink);}
-/* multi-select cards */
 .card.multi.sel{border-color:var(--gold);background:var(--gold-dim);}
 
 /* ── YES/NO ── */
@@ -228,7 +227,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
 </head>
 <body>
 
-<!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
@@ -253,7 +251,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
   </div>
 </section>
 
-<!-- ═══════════════ SERVICES STRIP ═══════════════ -->
 <div class="services-strip">
   <div class="services-strip-inner">
     <div class="svc-block"><div class="svc-icon">🚗</div><div class="svc-name">Vehicle Detail</div><div class="svc-sub">Cars, trucks, SUVs, motorcycles, boats, aircraft</div></div>
@@ -264,7 +261,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
   </div>
 </div>
 
-<!-- ═══════════════ FUNNEL ═══════════════ -->
 <div class="funnel-section" id="funnel">
   <div class="funnel-header">
     <div class="label">3-Minute Questionnaire</div>
@@ -272,7 +268,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     <p>Answer a few questions about your property and what you need — we'll calculate a custom price estimate on the spot.</p>
   </div>
 
-  <!-- PROGRESS -->
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:12%"></div></div>
     <div class="progress-label"><span id="progressText">Step 1 of 8</span><span id="progressPct">12%</span></div>
@@ -280,7 +275,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
 
   <div id="alertBox" class="alert"></div>
 
-  <!-- ─── STEP 1: WHAT DO YOU NEED ─── -->
   <div class="step active" id="s1">
     <div class="step-q">What do you need detailed today?</div>
     <div class="step-hint">Select everything that applies — we'll build your estimate around it.</div>
@@ -309,7 +303,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     <div class="btn-row"><button class="btn-next" onclick="next(1)">Continue →</button></div>
   </div>
 
-  <!-- ─── STEP 2: VEHICLE TYPES (conditional) ─── -->
   <div class="step" id="s2">
     <div class="step-q">What vehicles do you need detailed?</div>
     <div class="step-hint">Select all that apply. This affects time and pricing.</div>
@@ -346,7 +339,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     </div>
   </div>
 
-  <!-- ─── STEP 3: SERVICE LEVEL ─── -->
   <div class="step" id="s3">
     <div class="step-q">What level of service?</div>
     <div class="step-hint">Choose the detail level for your vehicles. Applies to all selected vehicle types.</div>
@@ -378,7 +370,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     </div>
   </div>
 
-  <!-- ─── STEP 4: ADD-ONS ─── -->
   <div class="step" id="s4">
     <div class="step-q">Any add-ons for the property?</div>
     <div class="step-hint">Select everything you'd like included in this visit. Skip if vehicles only.</div>
@@ -411,7 +402,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     <div class="skip-link" onclick="skipStep(4)">Skip — vehicles only</div>
   </div>
 
-  <!-- ─── STEP 5: LOCATION ─── -->
   <div class="step" id="s5">
     <div class="step-q">Where are you located?</div>
     <div class="step-hint">We serve Central PA. Enter your address so we can confirm coverage and travel.</div>
@@ -420,7 +410,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
       <div class="fg"><label>Zip Code *</label><input type="text" id="zip" placeholder="17101" maxlength="5"></div>
     </div>
     <div class="fg"><label>Street Address</label><input type="text" id="addr" placeholder="123 Main St — or general area is fine"></div>
-
     <div style="margin-top:26px;">
       <div class="step-hint" style="margin-bottom:10px;">💧 Water source within ~100 ft of vehicle / work area?<br><small style="color:var(--muted2);">(outdoor spigot, hose bib)</small></div>
       <div class="yn" id="waterYN">
@@ -436,14 +425,12 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
       </div>
     </div>
     <div class="access-warn" id="accessWarn">⚠️ No problem — we carry our own water tank and generator. We'll note this for your appointment and include a small supply fee in your estimate.</div>
-
     <div class="btn-row">
       <button class="btn-back" onclick="back(5)">← Back</button>
       <button class="btn-next" onclick="next(5)">Continue →</button>
     </div>
   </div>
 
-  <!-- ─── STEP 6: PHOTO ─── -->
   <div class="step" id="s6">
     <div class="step-q">Got a photo? (Optional)</div>
     <div class="step-hint">A quick photo helps us assess condition and give you the most accurate estimate. No pressure — skip if you prefer.</div>
@@ -460,7 +447,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     <div class="skip-link" onclick="skipStep(6)">Skip — no photos</div>
   </div>
 
-  <!-- ─── STEP 7: SCHEDULE ─── -->
   <div class="step" id="s7">
     <div class="step-q">Pick your weekend slot</div>
     <div class="step-hint">We work weekends only, 8am–6pm. Saturdays & Sundays highlighted below.</div>
@@ -482,7 +468,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     </div>
   </div>
 
-  <!-- ─── STEP 8: CONTACT ─── -->
   <div class="step" id="s8">
     <div class="step-q">Almost done — your info</div>
     <div class="step-hint">Enter your contact details and we'll show your instant estimate right after you submit.</div>
@@ -509,7 +494,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     </div>
   </div>
 
-  <!-- ═══════════════ ESTIMATE REVEAL ═══════════════ -->
   <div class="estimate-wrap" id="estimateWrap">
     <div class="est-hero">
       <div class="est-hero-inner">
@@ -535,7 +519,6 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     </div>
   </div>
 
-  <!-- ═══════════════ SUCCESS ═══════════════ -->
   <div class="success-screen" id="successScreen">
     <div class="success-icon">🚗✨</div>
     <h2>You're All Set!</h2>
@@ -550,7 +533,7 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
     </div>
   </div>
 
-</div><!-- /funnel-section -->
+</div>
 
 <footer>
   <div class="logo">GrimeReaper Co</div>
@@ -558,14 +541,44 @@ footer p{color:var(--muted);font-size:12px;letter-spacing:.04em;}
 </footer>
 
 <script>
-// ══════════════════════════════════════════
+// ═══════════════════════════════════════
+//  PRICING CONFIG — edit these to change prices
+// ═══════════════════════════════════════
+const PRICES = {
+  vehicles: {
+    'Sedan / Car':          300,
+    'SUV / Truck / Van':    385,
+    'Motorcycle':           160,
+    'Boat / RV':            750,
+    'Single-Engine Airplane': 1500
+  },
+  levels: {
+    'Wheel Detail':   0.50,
+    'Interior Detail': 0.70,
+    'Exterior Detail': 0.75,
+    'Full Detail':    1.00
+  },
+  addons: {
+    'Trash Bins':          60,
+    'Outdoor Fixtures':   120,
+    'Driveway / Patio':   180,
+    'Exterior House Wash': 360
+  },
+  propServices: {
+    'Trash Bin Cleaning':    60,
+    'Outdoor Fixtures':     120,
+    'Driveway / Patio':     180,
+    'Exterior House Washing': 360
+  },
+  supplyFee: 70,
+  discount:  0.50
+};
+
+// ═══════════════════════════════════════
 //  STATE
-// ══════════════════════════════════════════
+// ═══════════════════════════════════════
 const S = {
-  services:[],    // multi
-  vehicles:[],    // multi with prices
-  level:null,     // single + mult
-  addons:[],      // multi with prices
+  services:[], vehicles:[], level:null, addons:[],
   city:'', zip:'', addr:'',
   water:null, elec:null,
   photos:[],
@@ -576,15 +589,6 @@ const S = {
 let curStep = 1;
 const TOTAL_STEPS = 8;
 
-// ── which steps are active (step 2 skipped if no vehicle service) ──
-function activeSteps() {
-  if (S.services.includes('Vehicle Detailing')) return [1,2,3,4,5,6,7,8];
-  return [1,4,5,6,7,8]; // skip vehicle + level steps
-}
-
-// ══════════════════════════════════════════
-//  PROGRESS
-// ══════════════════════════════════════════
 function updateProgress(step) {
   const pct = Math.round((step/TOTAL_STEPS)*100);
   document.getElementById('progressFill').style.width = pct+'%';
@@ -592,179 +596,123 @@ function updateProgress(step) {
   document.getElementById('progressPct').textContent = pct+'%';
 }
 
-// ══════════════════════════════════════════
-//  NAVIGATION
-// ══════════════════════════════════════════
 function showStep(n) {
   for(let i=1;i<=TOTAL_STEPS;i++){
-    const el = document.getElementById('s'+i);
-    if(el) el.classList.toggle('active', i===n);
+    const el=document.getElementById('s'+i);
+    if(el) el.classList.toggle('active',i===n);
   }
-  curStep = n;
-  updateProgress(n);
-  hideAlert();
+  curStep=n; updateProgress(n); hideAlert();
   document.getElementById('funnel').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function next(n) {
   hideAlert();
-  if (!validate(n)) return;
+  if(!validate(n)) return;
   collectStep(n);
-
-  // Step 1: if no vehicle, skip steps 2 and 3
-  if (n===1) {
-    if (S.services.includes('Vehicle Detailing')) { showStep(2); }
-    else { showStep(4); }
-    return;
-  }
-  // Step 4: if no vehicle service, step 4 is first step so next=5
+  if(n===1){ S.services.includes('Vehicle Detailing') ? showStep(2) : showStep(4); return; }
   showStep(n+1);
 }
 
 function back(n) {
   hideAlert();
-  if (n===4 && !S.services.includes('Vehicle Detailing')) { showStep(1); return; }
-  if (n===2) { showStep(1); return; }
+  if(n===4 && !S.services.includes('Vehicle Detailing')){ showStep(1); return; }
+  if(n===2){ showStep(1); return; }
   showStep(n-1);
 }
 
-function skipStep(n) {
-  collectStep(n);
-  showStep(n+1);
-}
+function skipStep(n){ collectStep(n); showStep(n+1); }
 
-// ══════════════════════════════════════════
-//  VALIDATION
-// ══════════════════════════════════════════
 function validate(n) {
-  if (n===1) {
-    if (S.services.length===0) { showAlert('Please select at least one service.'); return false; }
+  if(n===1 && S.services.length===0){ showAlert('Please select at least one service.'); return false; }
+  if(n===2 && S.vehicles.length===0){ showAlert('Please select at least one vehicle type.'); return false; }
+  if(n===3 && !S.level){ showAlert('Please select a service level.'); return false; }
+  if(n===5){
+    const city=document.getElementById('city').value.trim();
+    const zip=document.getElementById('zip').value.trim();
+    if(!city){ showAlert('Please enter your city or town.'); return false; }
+    if(!/^\d{5}$/.test(zip)){ showAlert('Please enter a valid 5-digit zip code.'); return false; }
+    if(!S.water){ showAlert('Please answer the water access question.'); return false; }
+    if(!S.elec){ showAlert('Please answer the electrical access question.'); return false; }
   }
-  if (n===2) {
-    if (S.vehicles.length===0) { showAlert('Please select at least one vehicle type.'); return false; }
-  }
-  if (n===3) {
-    if (!S.level) { showAlert('Please select a service level.'); return false; }
-  }
-  if (n===5) {
-    const city = document.getElementById('city').value.trim();
-    const zip  = document.getElementById('zip').value.trim();
-    if (!city) { showAlert('Please enter your city or town.'); return false; }
-    if (!/^\d{5}$/.test(zip)) { showAlert('Please enter a valid 5-digit zip code.'); return false; }
-    if (!S.water) { showAlert('Please answer the water access question.'); return false; }
-    if (!S.elec)  { showAlert('Please answer the electrical access question.'); return false; }
-  }
-  if (n===7) {
-    if (!S.date) { showAlert('Please select a date.'); return false; }
-    if (!S.time) { showAlert('Please select a time slot.'); return false; }
+  if(n===7){
+    if(!S.date){ showAlert('Please select a date.'); return false; }
+    if(!S.time){ showAlert('Please select a time slot.'); return false; }
   }
   return true;
 }
 
-// ══════════════════════════════════════════
-//  COLLECT DATA
-// ══════════════════════════════════════════
 function collectStep(n) {
-  if (n===5) {
-    S.city  = document.getElementById('city').value.trim();
-    S.zip   = document.getElementById('zip').value.trim();
-    S.addr  = document.getElementById('addr').value.trim();
+  if(n===5){
+    S.city=document.getElementById('city').value.trim();
+    S.zip=document.getElementById('zip').value.trim();
+    S.addr=document.getElementById('addr').value.trim();
   }
 }
 
-// ══════════════════════════════════════════
-//  CARD SELECTION
-// ══════════════════════════════════════════
-function selectCard(el, gridId) {
+function selectCard(el,gridId) {
   document.querySelectorAll('#'+gridId+' .card').forEach(c=>c.classList.remove('sel'));
   el.classList.add('sel');
-  if (gridId==='levelGrid') {
-    S.level = { val: el.dataset.val, mult: parseFloat(el.dataset.mult) };
-  }
+  if(gridId==='levelGrid') S.level={val:el.dataset.val,mult:parseFloat(el.dataset.mult)};
 }
 
-function toggleMulti(el, gridId) {
+function toggleMulti(el,gridId) {
   el.classList.toggle('sel');
-  const vals = Array.from(document.querySelectorAll('#'+gridId+' .card.sel')).map(c=>c.dataset.val);
-  if (gridId==='servicesGrid') S.services = vals;
-  if (gridId==='vehicleGrid')  S.vehicles = Array.from(document.querySelectorAll('#vehicleGrid .card.sel')).map(c=>({val:c.dataset.val,price:parseInt(c.dataset.price)}));
-  if (gridId==='addonsGrid')   S.addons   = Array.from(document.querySelectorAll('#addonsGrid .card.sel')).map(c=>({val:c.dataset.val,price:parseInt(c.dataset.price)}));
+  if(gridId==='servicesGrid') S.services=Array.from(document.querySelectorAll('#servicesGrid .card.sel')).map(c=>c.dataset.val);
+  if(gridId==='vehicleGrid')  S.vehicles=Array.from(document.querySelectorAll('#vehicleGrid .card.sel')).map(c=>({val:c.dataset.val,price:parseInt(c.dataset.price)}));
+  if(gridId==='addonsGrid')   S.addons=Array.from(document.querySelectorAll('#addonsGrid .card.sel')).map(c=>({val:c.dataset.val,price:parseInt(c.dataset.price)}));
 }
 
-// ══════════════════════════════════════════
-//  YES/NO
-// ══════════════════════════════════════════
-function pickYN(field, val, btn) {
-  const group = document.getElementById(field+'YN');
-  group.querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('sel'));
+function pickYN(field,val,btn) {
+  document.getElementById(field+'YN').querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('sel'));
   btn.classList.add('sel');
-  S[field] = val;
-  const warn = S.water==='no' || S.elec==='no';
-  document.getElementById('accessWarn').classList.toggle('show', warn);
+  S[field]=val;
+  document.getElementById('accessWarn').classList.toggle('show', S.water==='no'||S.elec==='no');
 }
 
-// ══════════════════════════════════════════
-//  PHOTOS
-// ══════════════════════════════════════════
 function handlePhotos(input) {
-  S.photos = Array.from(input.files);
-  const grid = document.getElementById('photoGrid');
+  S.photos=Array.from(input.files);
+  const grid=document.getElementById('photoGrid');
   grid.innerHTML='';
-  if (S.photos.length) {
+  if(S.photos.length){
     grid.style.display='grid';
     document.getElementById('dropzone').style.display='none';
-    S.photos.forEach(f=>{
-      const img=document.createElement('img');
-      img.className='photo-thumb';
-      img.src=URL.createObjectURL(f);
-      grid.appendChild(img);
-    });
+    S.photos.forEach(f=>{ const img=document.createElement('img'); img.className='photo-thumb'; img.src=URL.createObjectURL(f); grid.appendChild(img); });
   }
 }
 
-// ══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  CALENDAR
-// ══════════════════════════════════════════
+// ═══════════════════════════════════════
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DOWS=['Su','Mo','Tu','We','Th','Fr','Sa'];
 let cY,cM;
-
-function initCal(){
-  const n=new Date(); cY=n.getFullYear(); cM=n.getMonth(); renderCal();
-}
+function initCal(){ const n=new Date(); cY=n.getFullYear(); cM=n.getMonth(); renderCal(); }
 function moveMonth(d){ cM+=d; if(cM>11){cM=0;cY++;}if(cM<0){cM=11;cY--;} renderCal(); }
 function renderCal(){
   document.getElementById('calTitle').textContent=MONTHS[cM]+' '+cY;
-  const grid=document.getElementById('calGrid');
-  grid.innerHTML='';
-  DOWS.forEach(d=>{const el=document.createElement('div');el.className='cal-dow';el.textContent=d;grid.appendChild(el);});
+  const grid=document.getElementById('calGrid'); grid.innerHTML='';
+  DOWS.forEach(d=>{ const el=document.createElement('div'); el.className='cal-dow'; el.textContent=d; grid.appendChild(el); });
   const first=new Date(cY,cM,1).getDay();
   const days=new Date(cY,cM+1,0).getDate();
-  const today=new Date();today.setHours(0,0,0,0);
-  for(let i=0;i<first;i++){const el=document.createElement('div');el.className='cal-day blank';grid.appendChild(el);}
+  const today=new Date(); today.setHours(0,0,0,0);
+  for(let i=0;i<first;i++){ const el=document.createElement('div'); el.className='cal-day blank'; grid.appendChild(el); }
   for(let d=1;d<=days;d++){
     const el=document.createElement('div');
     const date=new Date(cY,cM,d);
     const dow=date.getDay();
     const ds=cY+'-'+String(cM+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
     el.textContent=d; el.className='cal-day';
-    if(date<today){el.classList.add('dim');}
-    else if(dow===0||dow===6){
-      el.classList.add('avail');
-      if(S.date===ds) el.classList.add('picked');
-      el.onclick=()=>pickDate(ds,date,el);
-    } else {el.classList.add('dim');}
+    if(date<today){ el.classList.add('dim'); }
+    else if(dow===0||dow===6){ el.classList.add('avail'); if(S.date===ds) el.classList.add('picked'); el.onclick=()=>pickDate(ds,date,el); }
+    else{ el.classList.add('dim'); }
     grid.appendChild(el);
   }
 }
 function pickDate(ds,dateObj,el){
   document.querySelectorAll('.cal-day').forEach(d=>d.classList.remove('picked'));
-  el.classList.add('picked');
-  S.date=ds; S.time=null;
-  const label=dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
-  document.getElementById('dateLabel').textContent=label;
-  renderTimes();
-  document.getElementById('timeSection').style.display='block';
+  el.classList.add('picked'); S.date=ds; S.time=null;
+  document.getElementById('dateLabel').textContent=dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  renderTimes(); document.getElementById('timeSection').style.display='block';
 }
 function renderTimes(){
   const grid=document.getElementById('timeGrid'); grid.innerHTML='';
@@ -774,63 +722,41 @@ function renderTimes(){
     const el=document.createElement('button');
     el.className='time-btn'+(taken.includes(i)?' taken':'');
     el.textContent=t;
-    if(!taken.includes(i)){
-      if(S.time===t)el.classList.add('sel');
-      el.onclick=()=>pickTime(t,el);
-    }
+    if(!taken.includes(i)){ if(S.time===t) el.classList.add('sel'); el.onclick=()=>pickTime(t,el); }
     grid.appendChild(el);
   });
 }
-function pickTime(t,el){
-  document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel'); S.time=t;
-}
+function pickTime(t,el){ document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('sel')); el.classList.add('sel'); S.time=t; }
 
-// ══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  ESTIMATE CALCULATION
-// ══════════════════════════════════════════
+// ═══════════════════════════════════════
 function calcEstimate(){
-  let base=0;
-  const rows=[];
-
-  // Vehicles
+  let base=0; const rows=[];
   if(S.vehicles.length){
     const mult=S.level ? S.level.mult : 1.0;
     let vTotal=0;
     S.vehicles.forEach(v=>{ vTotal+=v.price; });
     const vLine=Math.round(vTotal*mult);
     base+=vLine;
-    rows.push({label:(S.level?S.level.val:'Full Detail')+' — '+S.vehicles.map(v=>v.val).join(', '), amt:vLine});
+    rows.push({label:(S.level?S.level.val:'Full Detail')+' — '+S.vehicles.map(v=>v.val).join(', '),amt:vLine});
   }
-
-  // Add-ons / standalone services
   S.addons.forEach(a=>{ base+=a.price; rows.push({label:a.val,amt:a.price}); });
-
-  // If only property services selected (no vehicles), use fixed rates
   if(!S.vehicles.length){
-    const propServices={
-      'Trash Bin Cleaning':60,'Outdoor Fixtures':120,
-      'Driveway / Patio':180,'Exterior House Washing':360
-    };
     S.services.filter(s=>s!=='Vehicle Detailing').forEach(s=>{
-      if(propServices[s]){base+=propServices[s];rows.push({label:s,amt:propServices[s]});}
+      const p=PRICES.propServices[s];
+      if(p){ base+=p; rows.push({label:s,amt:p}); }
     });
   }
-
-  // Supply fee if no water/electric
-  if(S.water==='no'||S.elec==='no'){ base+=70; rows.push({label:'Mobile Supply Fee (tank/generator)',amt:70}); }
-
-  const discount=Math.round(base*0.5);
+  if(S.water==='no'||S.elec==='no'){ base+=PRICES.supplyFee; rows.push({label:'Mobile Supply Fee (tank/generator)',amt:PRICES.supplyFee}); }
+  const discount=Math.round(base*PRICES.discount);
   const total=base-discount;
-  const low=Math.round(total*0.9);
-  const high=Math.round(total*1.15);
-
-  return {rows,base,discount,total,low,high};
+  return {rows,base,discount,total,low:Math.round(total*0.9),high:Math.round(total*1.15)};
 }
 
-// ══════════════════════════════════════════
-//  SUBMIT FUNNEL
-// ══════════════════════════════════════════
+// ═══════════════════════════════════════
+//  SUBMIT
+// ═══════════════════════════════════════
 function submitFunnel(){
   hideAlert();
   S.fname=document.getElementById('fname').value.trim();
@@ -839,44 +765,26 @@ function submitFunnel(){
   S.email=document.getElementById('email').value.trim();
   S.contactPref=document.getElementById('contactPref').value;
   S.notes=document.getElementById('notes').value.trim();
-
-  if(!S.fname||!S.lname){showAlert('Please enter your first and last name.');return;}
-  if(!S.phone||S.phone.replace(/\D/g,'').length<10){showAlert('Please enter a valid phone number.');return;}
-  if(!S.email||!S.email.includes('@')){showAlert('Please enter a valid email address.');return;}
-
-  // Hide steps & progress
-  for(let i=1;i<=TOTAL_STEPS;i++){const el=document.getElementById('s'+i);if(el)el.style.display='none';}
+  if(!S.fname||!S.lname){ showAlert('Please enter your first and last name.'); return; }
+  if(!S.phone||S.phone.replace(/\D/g,'').length<10){ showAlert('Please enter a valid phone number.'); return; }
+  if(!S.email||!S.email.includes('@')){ showAlert('Please enter a valid email address.'); return; }
+  for(let i=1;i<=TOTAL_STEPS;i++){ const el=document.getElementById('s'+i); if(el) el.style.display='none'; }
   document.getElementById('progressWrap').style.display='none';
   document.getElementById('alertBox').style.display='none';
-
-  // Build estimate
   const est=calcEstimate();
   document.getElementById('estRange').textContent='$'+est.low+' – $'+est.high;
   document.getElementById('estNote').textContent='Based on your selections. Final price confirmed after on-site assessment. 50% first-visit discount already applied.';
-
-  // Breakdown rows
-  const bRows=document.getElementById('breakdownRows');
-  bRows.innerHTML='';
-  est.rows.forEach(r=>{
-    bRows.innerHTML+=`<div class="breakdown-row"><span class="bk">${r.label}</span><span class="bv">$${r.amt}</span></div>`;
-  });
+  const bRows=document.getElementById('breakdownRows'); bRows.innerHTML='';
+  est.rows.forEach(r=>{ bRows.innerHTML+=`<div class="breakdown-row"><span class="bk">${r.label}</span><span class="bv">$${r.amt}</span></div>`; });
   document.getElementById('discountRow').textContent='-$'+est.discount+' (50% off)';
   document.getElementById('totalRow').textContent='$'+est.low+' – $'+est.high;
-
-  // Preferred method
-  document.getElementById('prefMethodDisplay').textContent=
-    S.contactPref==='Call or Text' ? 'phone/text' :
-    S.contactPref==='Email' ? 'email' : 'phone and email';
-
-  // Booking summary inside estimate
-  const d=S.date ? new Date(S.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}) : '—';
+  document.getElementById('prefMethodDisplay').textContent=S.contactPref==='Call or Text'?'phone/text':S.contactPref==='Email'?'email':'phone and email';
+  const d=S.date?new Date(S.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}):'—';
   document.getElementById('bookingSummaryRows').innerHTML=`
     <div class="breakdown-row"><span class="bk">Name</span><span class="bv">${S.fname} ${S.lname}</span></div>
     <div class="breakdown-row"><span class="bk">Phone</span><span class="bv">${S.phone}</span></div>
     <div class="breakdown-row"><span class="bk">Location</span><span class="bv">${S.city}, PA ${S.zip}</span></div>
-    <div class="breakdown-row"><span class="bk">Appointment</span><span class="bv">${d} at ${S.time||'—'}</span></div>
-  `;
-
+    <div class="breakdown-row"><span class="bk">Appointment</span><span class="bv">${d} at ${S.time||'—'}</span></div>`;
   document.getElementById('estimateWrap').classList.add('show');
   document.getElementById('funnel').scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -884,81 +792,63 @@ function submitFunnel(){
 function confirmBooking(){
   document.getElementById('estimateWrap').style.display='none';
   const est=calcEstimate();
-
-  // ── Send to Formspree ──
-  const bookingData = {
-    name: S.fname + ' ' + S.lname,
-    phone: S.phone,
-    email: S.email,
-    contact_preference: S.contactPref,
-    services_requested: S.services.join(', '),
-    vehicles: S.vehicles.map(v=>v.val).join(', ') || 'None',
-    service_level: S.level ? S.level.val : 'N/A',
-    property_addons: S.addons.map(a=>a.val).join(', ') || 'None',
-    address: S.addr,
-    city: S.city,
-    zip: S.zip,
-    water_access: S.water,
-    electric_access: S.elec,
-    appointment_date: S.date,
-    appointment_time: S.time,
-    estimate_low: '$' + est.low,
-    estimate_high: '$' + est.high,
-    discount_applied: '50% off — savings of $' + est.discount,
-    notes: S.notes || 'None',
-    photos_uploaded: S.photos.length > 0 ? S.photos.length + ' photo(s)' : 'None'
+  const bookingData={
+    name:S.fname+' '+S.lname,
+    phone:S.phone,
+    email:S.email,
+    contact_preference:S.contactPref,
+    services_requested:S.services.join(', '),
+    vehicles:S.vehicles.map(v=>v.val).join(', ')||'None',
+    service_level:S.level?S.level.val:'N/A',
+    property_addons:S.addons.map(a=>a.val).join(', ')||'None',
+    address:S.addr,
+    city:S.city,
+    zip:S.zip,
+    water_access:S.water,
+    electric_access:S.elec,
+    appointment_date:S.date,
+    appointment_time:S.time,
+    estimate_low:'$'+est.low,
+    estimate_high:'$'+est.high,
+    discount_applied:'50% off — savings of $'+est.discount,
+    notes:S.notes||'None',
+    photos_uploaded:S.photos.length>0?S.photos.length+' photo(s)':'None'
   };
 
-  // Send to Formspree (email notification)
-  fetch('https://formspree.io/f/xkoajnyb', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(bookingData)
-  }).catch(err => console.error('Formspree error:', err));
+  // Formspree — email notification
+  fetch('https://formspree.io/f/xkoajnyb',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(bookingData)
+  }).catch(err=>console.error('Formspree error:',err));
 
-  // Send directly to Zapier (SMS + Gmail)
-  fetch('https://hooks.zapier.com/hooks/catch/18687693/4bp7n0e/', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(bookingData)
-  }).catch(err => console.error('Zapier error:', err));
-  const d=S.date ? new Date(S.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}) : '—';
+  // Zapier — direct webhook with no-cors so browser doesn't block it
+  fetch('https://hooks.zapier.com/hooks/catch/18687693/4bp7n0e/',{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'text/plain'},
+    body:JSON.stringify(bookingData)
+  }).catch(err=>console.error('Zapier error:',err));
+
+  const d=S.date?new Date(S.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}):'—';
   document.getElementById('successDetail').innerHTML=`
     <div class="sd-row"><span class="sk">Name</span><span class="sv">${S.fname} ${S.lname}</span></div>
     <div class="sd-row"><span class="sk">Services</span><span class="sv">${[...S.services,...S.addons.map(a=>a.val)].join(', ')||'—'}</span></div>
     <div class="sd-row"><span class="sk">Appointment</span><span class="sv">${d} at ${S.time||'—'}</span></div>
     <div class="sd-row"><span class="sk">Location</span><span class="sv">${S.city}, PA ${S.zip}</span></div>
     <div class="sd-row"><span class="sk">Est. Total</span><span class="sv" style="color:var(--gold);font-size:16px;">$${est.low}–$${est.high}</span></div>
-    <div class="sd-row"><span class="sk">Discount</span><span class="sv" style="color:var(--gold);">50% OFF Applied ✓</span></div>
-  `;
+    <div class="sd-row"><span class="sk">Discount</span><span class="sv" style="color:var(--gold);">50% OFF Applied ✓</span></div>`;
   document.getElementById('successScreen').classList.add('show');
   document.getElementById('funnel').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// ══════════════════════════════════════════
-//  ALERT
-// ══════════════════════════════════════════
-function showAlert(msg){
-  const b=document.getElementById('alertBox');
-  b.textContent=msg; b.classList.add('show');
-  b.scrollIntoView({behavior:'smooth',block:'center'});
-}
-function hideAlert(){
-  document.getElementById('alertBox').classList.remove('show');
-}
+function showAlert(msg){ const b=document.getElementById('alertBox'); b.textContent=msg; b.classList.add('show'); b.scrollIntoView({behavior:'smooth',block:'center'}); }
+function hideAlert(){ document.getElementById('alertBox').classList.remove('show'); }
 
-// ══════════════════════════════════════════
-//  PHONE FORMAT
-// ══════════════════════════════════════════
 document.addEventListener('DOMContentLoaded',()=>{
-  initCal();
-  updateProgress(1);
+  initCal(); updateProgress(1);
   const ph=document.getElementById('phone');
-  if(ph) ph.addEventListener('input',function(){
-    let v=this.value.replace(/\D/g,'');
-    if(v.length>=10) v='('+v.slice(0,3)+') '+v.slice(3,6)+'-'+v.slice(6,10);
-    this.value=v;
-  });
+  if(ph) ph.addEventListener('input',function(){ let v=this.value.replace(/\D/g,''); if(v.length>=10) v='('+v.slice(0,3)+') '+v.slice(3,6)+'-'+v.slice(6,10); this.value=v; });
 });
 </script>
 </body>
