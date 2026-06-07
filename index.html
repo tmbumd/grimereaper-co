@@ -822,13 +822,12 @@ function confirmBooking(){
     body:JSON.stringify(bookingData)
   }).catch(err=>console.error('Formspree error:',err));
 
-  // Zapier — direct webhook with no-cors so browser doesn't block it
-  fetch('https://hooks.zapier.com/hooks/catch/18687693/4bp7n0e/',{
+  // Zapier — routed through Netlify function to avoid CORS
+  fetch('/.netlify/functions/notify',{
     method:'POST',
-    mode:'no-cors',
-    headers:{'Content-Type':'text/plain'},
+    headers:{'Content-Type':'application/json'},
     body:JSON.stringify(bookingData)
-  }).catch(err=>console.error('Zapier error:',err));
+  }).catch(err=>console.error('Zapier proxy error:',err));
 
   const d=S.date?new Date(S.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}):'—';
   document.getElementById('successDetail').innerHTML=`
